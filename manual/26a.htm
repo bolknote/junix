@@ -1,0 +1,25 @@
+<HEAD>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="ext.css" TITLE="mainstyle">
+</HEAD>
+<BODY BGCOLOR=WHiTE TEXT=BLACK ALINK=RED VLINK=#00008F LINK=#00008F>
+<TABLE WIDTH=580 BORDER=0 ALIGN=CENTER CELLPADDING=2>
+<TR><TD>
+<B CLASS=b>set [-rwqxsf] | [name1=value1 [name2=value2 [...]]</B> -
+без параметров выводит на экран имена и значения всех переменных,
+определеных в системе, c ключами управляет работой системы, иначе занимается присваиванием
+переменных. См. раздел &quot;<A HREF="1a.htm"><B>переменные</B></A>&quot;.<BR><BR>
+-r - монтирование устройства в режиме только для чтения (см. помощь по команде mount).<BR>
+-w - монтирование в обычном режиме.<BR>
+-q - подтверждать изменения на смонтированных устройствах типа Extended (floppy, hard disks).<BR>
+-x - не подтверждать.<BR>
+-s - режим скроллинга (принудительная промотка экрана вниз).<BR>
+-f - без скроллинга.<BR>
+-b - включает мигание курсора.<BR>
+-B - отключает.
+<BR><BR>
+<B>Примеры.</B><BR><FONT COLOR=RED>set</FONT>;
+<FONT COLOR=RED>set</FONT> -r;<BR>
+<FONT COLOR=RED>set</FONT> a=(a b c);<BR>
+<FONT COLOR=RED>set</FONT> a[1]=d;
+</TD></TR></TABLE>
+</BODY>

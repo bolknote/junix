@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<TITLE>Unix emulator</TITLE>
+<META CONTENT="text/html; charset=windows-1251" HTTP-EQUIV="Content-Type">
+<SCRIPT>var Ver="5.50b"</SCRIPT>
+<SCRIPT LANGUAGE=JavaScript1.2 SRC=modules/unix.js></SCRIPT>
+<SCRIPT LANGUAGE=JavaScript1.2 SRC=modules/mail.js></SCRIPT>
+<SCRIPT LANGUAGE=JavaScript1.2 SRC=modules/file.js></SCRIPT>
+<SCRIPT LANGUAGE=JavaScript1.2 SRC=modules/exec.js></SCRIPT>
+<STYLE TYPE="text/css">
+<!--
+	DIV,LAYER	{font-family:'Lucida Console';font-size:18px;border-style:none;background-color:black;color:lime};
+	#text		{position:absolute;top:22;left:10;width:200}
+	A			{text-decoration: none}
+	IMG			{position:relative;visibility:hidden}
+	#text		{height: 100%}
+-->
+</STYLE>
+</HEAD>
+<BODY BGCOLOR=BLACK TEXT=LIME SCROLL=AUTO
+onLoad="wid=Width();hig=Height();if (document.all) document.all.text.style.width=document.body.clientWidth-50;this.focus();Type('JS Unix emulator v'+Ver+' 1999-2002.\n');TypeCPU();Type('\nLogin: ');
+if (NC && /X/.test(navigator.userAgent) && Version<5) bHnd = window.open('modules/modf.htm',null,'width=400,height=200')"
+LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0 onKeyPress="KeyPress(event)" onKeyDown="KeyDown(event)" onKeyUp="KeyUp(event)"
+onResize="wid=Width();hig=Height();Write('')" onError="return true" onFocus="if (IE) text.focus()"
+>
+<LAYER TOP=0 LEFT=5>
+<NOLAYER>
+<DIV STYLE="position: absolute;top:3;left:5;cursor:default" TITLE="copyright">
+</NOLAYER>
+<A HREF="mailto:bolk@yandex.ru"><FONT FACE=System COLOR=GREEN SIZE=1 STYLE="font-family:Monospace;font-size:10px;color:green">&copy; Stepanischev Evgeny. (BO/\K) 2001 Kazan</FONT></A>
+</LAYER>
+<NOLAYER>
+</DIV>
+</NOLAYER><BR>
+<TABLE WIDTH=500 HEIGHT=300>
+<TR><TD VALIGN=TOP><SPAN>
+<LAYER NAME=text LEFT=10 TOP=20><NOLAYER><DIV ID=text></DIV></NOLAYER></LAYER>
+</SPAN></TD></TR></TABLE>
+
+<SCRIPT LANGUAGE=JavaScript>
+document.open()
+for (var i = 0; i<10; i++)
+document.write('<SPAN ID=nr'+i+'><IMG SRC=about:logo NAME=navi'+i+' WIDTH=1 HEIGHT=1></SPAN>')
+document.close()
+</SCRIPT>
+</BODY>
+</HTML>

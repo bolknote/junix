@@ -1,0 +1,58 @@
+<HEAD><TITLE>Key capture v 0.2</TITLE>
+<STYLE TYPE=text/css>body, td {font-family:'Lucida Console';font-size:19px}</STYLE>
+<SCRIPT>
+function myevent()
+{
+	this.which = 0
+	this.modifiers = 0
+	this.keyCode = 0
+}
+
+
+function Type()
+{
+	with (document.forms[0])
+	{
+		text = txt.value
+		text = text.replace(/#n/g,"\r").replace(/#t/g,"	").replace(/#x/g,"").replace(/#e/g,"").replace(/#d/g,"").replace(/#s/g,"").replace(/##/g,"#")
+
+		mevent = new myevent()
+
+		for (i = 0; i<text.length;i++)
+		{
+			mevent.which = key = text.charCodeAt(i)
+			txt.value = txt.value.substr(1)
+			if (key==1) mevent.which = 38;else
+			if (key==2) mevent.which = 24;else
+			if (key==3) mevent.which = 8; else
+			if (key==4) mevent.which = 27
+
+			mevent.modifiers = 0
+			opener.KeyDown(mevent)
+			if (key>12) opener.KeyPress(mevent),
+			txt.value = txt.value.substr(1)
+			opener.KeyUp(mevent)
+		}
+		txt.value = ""
+		txt.focus()
+	}
+}
+
+
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR=BLACK TEXT=LIME onFocus="document.forms[0].txt.focus()">
+<TABLE WIDTH=100%>
+<FORM ACTION="javascript:Type()">
+<TR><TD><INPUT TYPE=TEXT NAME=txt></TD>
+<TD><INPUT TYPE=BUTTON VALUE=OK onClick="Type()"></TD></TR>
+<TR><TD COLSPAN=2><BR>#n will replace by &quot;Enter&quot;.<BR>
+#t will replace by &quot;Tab&quot;.<BR>
+#e will replace by &quot;Ctrl-E&quot;.<BR>
+#x will replace by &quot;Ctrl-X&quot;.<BR>
+#d will replace by &quot;Backspace&quot;.<BR>
+#s will replace by &quot;Escape&quot;.<BR>
+</TD></TR>
+</FORM>
+</TABLE>
+</BODY>

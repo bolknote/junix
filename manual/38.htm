@@ -1,0 +1,33 @@
+<HEAD>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="ext.css" TITLE="mainstyle">
+</HEAD>
+<BODY BGCOLOR=WHiTE TEXT=BLACK ALINK=RED VLINK=#00008F LINK=#00008F>
+<TABLE WIDTH=580 BORDER=0 ALIGN=CENTER CELLPADDING=2>
+<TR><TD>
+<B CLASS=b>[name]daemon[name]&</B> - это не команда, а модификатор команды.
+Ћюба€ программа (команда), содержаща€ в своем имени или параметрах подстроку daemon, в фоне
+(см. <A HREF="37.htm">&</A>) будет выполн€тьс€ особым образом - она будет
+вызыватьс€ каждые (примерно) 12 секунд (т.е. работать посто€нно). “акой командой в JUnix&nbsp;v5.09b €вл€етс€
+navidaemon. ѕриведу пример программы, котора€ в фоне пытаетс€ привести PI к
+натуральной дроби:
+<TABLE WIDTH=100% BORDER=0>
+<TR>
+<TD><BR>
+<B>pidaemon</B>:<BR>
+if ($?pi1) then<BR>
+if ($pi gt Math.PI) then<BR>
+set pi2=`bc $pi2+1`<BR>
+else<BR>
+set pi1=`bc $pi1+1`<BR>
+endif<BR>
+set pi=`bc $pi1/$pi2`<BR>
+else<BR>
+set pi1=3 pi2=1 pi=3<BR>
+endif
+</TD>
+<TD VALIGN=TOP><BR><B>ѕримеры.</B><BR>mail<FONT COLOR=RED>daemon&</FONT>;
+<BR>pi<FONT COLOR=RED>daemon&</FONT>;
+<BR>some<FONT COLOR=RED>daemon</FONT>thing<FONT COLOR=RED>&</FONT>;
+</TD></TR></TABLE>
+</TD></TR></TABLE>
+</BODY>

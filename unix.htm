@@ -1,0 +1,157 @@
+
+<HTML><HEAD>
+<TITLE>Эмулятор Unix. Степанищев Е.В.</TITLE>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="ext.css" TITLE="mainstyle">
+</HEAD>
+<BODY BGCOLOR=WHiTE LINK=#00008F VLINK=#00008F ALINK=RED TEXT=BLACK>
+<A NAME="up">
+<TABLE WIDTH=600 BORDER=0 ALIGN=CENTER>
+<TR><TD>
+<P ALIGN=CENTER><STRONG>Эмулятор Unix v5.51b</STRONG></P>
+</TD></TR>
+<TR><TD><TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% BGCOLOR=BLACK ALIGN=CENTER><TR><TD><IMG SRC=null.gif WIDTH=1 HEIGHT=1></TD></TR></TABLE></TD></TR>
+<TR><TD>
+<FONT SIZE=1 FACE=Arial>
+<A HREF="unix/unix.htm" TARGET=_blank><FONT COLOR=BLACK><B>Эмулятор Unix</B></FONT></A> написан исключительно
+для моего собственного развлечения и стал для меня чем-то вроде хобби.
+<A HREF="unix/unix.htm" TARGET=_blank><IMG SRC=unix1.gif WIDTH=300 HEIGHT=225 ALT="Внешний вид" ALIGN=RIGHT HSPACE=5 VSPACE=5 BORDER=0></A>
+Если он кому-то понравится черкните, <A HREF="mailto:bolk@yandex.ru">мне</A>
+будет приятно... Ну что ж, если я тебя (Вас) не дай бог заинтересовал, предлагаю почитать
+следующий бред на темы:<BR><BR>
+<CENTER><B>СОДЕРЖАНИЕ:</B></CENTER><BR>
+<FONT COLOR=BLaCK><B>#</B></FONT><A HREF="#xow"><U> Как запуcкать? (Под чем работает)</U></A><BR>
+<FONT COLOR=BLaCK><B>#</B></FONT><A HREF="#rulez"><U> Что реализовано в эмуляторе.</U></A><BR>
+<FONT COLOR=BLaCK><B>#</B></FONT><A HREF="#suxxx"><U> Что предстоит реализовать.</U></A><BR>
+<FONT COLOR=BLaCK><B>#</B></FONT><A HREF="#vother"><U> Отличия эмулятора от нормального Униха.</U></A><BR>
+<FONT COLOR=BLaCK><B>#</B></FONT><A HREF="news.htm"><U> Что нового (содержание предыдущих серий).</U></A><BR>
+<FONT COLOR=BLaCK><B>#</B></FONT><A HREF="manual/manual.htm"><U> Описание команд (мануал).</U></A><BR>
+<FONT COLOR=BLaCK><B>#</B></FONT><A HREF="#copy"><U> Копирайт. (Про меня). </U></A><BR>
+<BR>
+<FONT COLOR=BLaCK><B>#</B></FONT><A HREF="#xi"><U> Cпециал тхынкс.</U></A><BR><BR><BR>
+</FONT> 
+</TD></TR>
+<TR><TD><TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% BGCOLOR=BLACK ALIGN=CENTER><TR><TD><IMG SRC=null.gif WIDTH=1 HEIGHT=1></TD></TR></TABLE></TD></TR>
+<TR><TD><FONT SIZE=1 FACE=Arial><DIV ALIGN=RIGHT><A HREF="unix/unix.htm" TARGET=_blank><B>x Запуск</B></A>&nbsp;&nbsp;<A HREF="#up"><B>^ Вверх</B></A></DIV>
+<A NAME="xow">
+<CENTER><STRONG>Под чем запускается.</STRONG></CENTER><BR>
+Прога написана на JavaScript 1.2 (точнее DHTML) и теоретически должна работать под
+Internet Explorer 4.00 (и выше), Netscape Navigator 4.00 (и выше) и Mozilla 0.9.0 и выше.
+Запускается просто: открываешь (-ете) в браузере, придумываешь (-ете) имя и пароль,
+набираешь (-ете) и работаешь (-ете).
+Пока испытано только под:<BR>
+<UL STYLE="list-style-type:square">
+<LI>Internet Explorer 4.00, 4.01, 5.00.2314.1003, 5.01, 5.5, 6.0 (Вынь)</LI>
+<LI>Internet Explorer 5.0 (Macintosh Edition)</LI>
+<LI>Netscape Navigator 4.04 (OS/2)</LI>
+<LI>Netscape Navigator 4.05, 4.08, 4.5, 4.6, 4.61, 4.7, 4.72-4.79 (Вынь)</LI>
+<LI>Netscape Navigator 6.2 (Вынь)</LI>
+<LI>Netscape Navigator 4.7 (freeBSD)</LI>
+<LI>Mozilla 0.9.4, 0.9.5+, 0.9.6 (Вынь)</LI>
+<LI>K-Meleon 0.6 (Вынь)</LI>
+<LI>Beonex 0.6-pre (Вынь)</LI>
+<LI>Opera 7.00b1, 7.00b2, 7.00, 7.01, 7.20b (Вынь) пока ограниченая поддержка</LI>
+<LI>Opera 3.xx, 4.xx, 5.xx, 6.00b (гарантировано не работает, нет нормальной DOM)</LI>
+</UL>
+<!-- <A HREF="http://www.ozon.ru/index.cfm/partner=junix"><IMG SRC = "http://mmedia.ozon.ru/graphics/img_ass/88/oz_button_2.gif" ALT="о3он" BORDER=0 align=right></A> -->
+Итак......... <A HREF=unix/unix.htm TARGET=_blank><B>3АПУСК!</B></A>
+<P><BR></FONT>
+</TD></TR>
+<TR><TD><TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% BGCOLOR=BLACK ALIGN=CENTER><TR><TD><IMG SRC=null.gif WIDTH=1 HEIGHT=1></TD></TR></TABLE></TD></TR>
+<TR><TD><FONT SIZE=1 FACE=Arial><DIV ALIGN=RIGHT><A HREF="unix/unix.htm" TARGET=_blank><B>x Запуск</B></A>&nbsp;&nbsp;<A HREF="#up"><B>^ Вверх</B></A></DIV>
+<A NAME="rulez">
+<CENTER><STRONG>Что реализовано в эмуляторе.</STRONG></CENTER><BR>
+<UL STYLE="list-style-type:square">
+<LI>Пока  реализованы комманды:?,@,bc,break,brow,bye,cat,cd,chmod,clear,compress,cp,cut,date,echo,eval,exit,fg,foreach, fw, grep,goto,icq,if,kill,ln,load,ls,mail,<B>man</B>,mkdir,mkfifo,more,mount,mv,ps,pwd,rate,read,rehash, repeat,rm,rmdir,rulez, save,scan,sed,set,shift,source,su,suxxx,tail,tee,touch,unhash, unmount,unset,vi,wc,where,while,whoami,wish.
+Если интересно можно почитать <B>man</B> по каждой команде (man &lt;комманда&gt;). Написано
+на кривом английском, но думаю понятно.</LI>
+<LI>Реализованы && и ||, переназначение ввода-вывода (&lt;,&gt;,|,&gt;&gt;), множественное
+выполнение ({список},команда;команда;..)</LI>
+<LI>Реализованы ссылки на файлы (но не на директории).</LI>
+<LI>Реализована древовидная файловая система с правами доступа.</LI>
+<LI>Реализовано монтирование и демонтирование устройств (cookie, объекты, жесткие диски и дисководы).
+<LI>Реализована подстановка результатов команды при помощи обратных апострофов
+(`), параметры $#,$*,$1,$2,$3,..., операции $?var,$#var,$var[n]</LI>
+<LI>Подстановка пути (аналог Tab в Unix'e) по двойному нажатию на Ctrl (в NC 4.x),
+Ctrl+Tab (в NC 6.x) или
+Tab (в IE).</LI>
+<LI>Подстановка переменных и манипуляции с ними, файлы .profile и .history,
+экранирование слешем и апострофами, подобие диалогового режима, шаблоны файлов (*,?,[,])</LI>
+</UL>
+Подробнее в разделах <A HREF="#vother">отличия</A> и <A HREF="manual/manual.htm">мануал (описание комманд)</A>.
+<P></P><BR></FONT>
+</TD></TR>
+<TR><TD><TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% BGCOLOR=BLACK ALIGN=CENTER><TR><TD><IMG SRC=null.gif WIDTH=1 HEIGHT=1></TD></TR></TABLE></TD></TR>
+<TR><TD><FONT SIZE=1 FACE=Arial><DIV ALIGN=RIGHT><A HREF="unix/unix.htm" TARGET=_blank><B>x Запуск</B></A>&nbsp;&nbsp;<A HREF="#up"><B>^ Вверх</B></A></DIV>
+<A NAME="suxxx">
+<CENTER><STRONG>Что предстоит реализовать..</STRONG></CENTER><BR>
+В ближайших планах реализовать awk, find, test и case,
+переназначение диагностики и стандартного вывода (2&gt;&amp;,1&gt;&amp;). Дальше
+- посмотрим. Вообще-то работы много, не знаю на сколько меня хватит.
+Возможно появится что-то более интересное.
+<P></P><BR></FONT>
+</TD></TR>
+<TR><TD><TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% BGCOLOR=BLACK ALIGN=CENTER><TR><TD><IMG SRC=null.gif WIDTH=1 HEIGHT=1></TD></TR></TABLE></TD></TR>
+<TR><TD><FONT SIZE=1 FACE=Arial><DIV ALIGN=RIGHT><A HREF="unix/unix.htm" TARGET=_blank><B>x Запуск</B></A>&nbsp;&nbsp;<A HREF="#up"><B>^ Вверх</B></A></DIV>
+<A NAME="vother">
+<CENTER><STRONG>Отличия эмулятора от нормального Униха.</STRONG></CENTER><BR>
+<UL STYLE="list-style-type:square">
+<LI>Комманды load и save загружают и отгружают имидж файловой системы
+с/на смонтированное устройство.</LI>
+<LI>В системе можно создавать макросы ( последовательности комманды ), делать их
+запускаемыми и использовать как комманды ( как в Unix, но есть отличия - не
+нужна строчка #!/... и т.п. ). Некоторые комманды именно так и реализованы.
+<LI>В системе только один пользователь - суперюзер и система не многозадачна.</LI>
+<LI>Комбинация Ctrl-t поднимает систему после краха JavaScript, комбинация Ctrl-e (для
+IE5 - стрелка вверх) вызывает предыдущую команду, два раза Ctrl (в IE5 можно Tab) - аналог Tab Unix'a.</LI>
+<LI>Так как в системе только один пользователь права доступа проставляются только для
+владельца и числовой параметр команды chmod одноразрядный.</LI>
+<LI>Директории не являются файлами и сменить права доступа у них не удастся.</LI>
+<LI>Команда scan исправляет ошибки в файловой системе.</LI>
+<LI>Pipe (|) запускает команды не паралельно, а последовательно.</LI>
+<LI>Есть отличия при работе с переменными. См. <A HREF="manual/vars.htm">описание команд</A>.</LI>
+<LI>Организация диалогового режима организована командой dialog, которой нет в Unix'e.  Ее
+описание можно прочитать только <A HREF="manual/dia.htm">здесь</A> (в man ее нет).</LI>
+</UL><P></P><BR></FONT>
+</TD></TR>
+<TR><TD><TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% BGCOLOR=BLACK ALIGN=CENTER><TR><TD><IMG SRC=null.gif WIDTH=1 HEIGHT=1></TD></TR></TABLE></TD></TR>
+<TR><TD><FONT SIZE=1 FACE=Arial><DIV ALIGN=RIGHT><A HREF="unix/unix.htm" TARGET=_blank><B>x Запуск</B></A>&nbsp;&nbsp;<A HREF="#up"><B>^ Вверх</B></A></DIV>
+<A NAME="copy">
+<IMG SRC="I.jpg" WIDTH=111 HEIGHT=113 ALIGN=LEFT VSPACE=20 HSPACE=5 ALT="Мо:e фото">
+<CENTER><STRONG>Про меня.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</STRONG></CENTER><BR>
+Я! В меру скромный и очень талантливый программист, знающий Java, JavaScript вплоть
+до 1.4, JScript, VBScript, Delphi, Turbo Pascal, C, Perl, PHP, CGI, HTML, XML, XSLT, SQL, Ассемблер (хотя кому
+он сейчас нужен).<BR>Мое имя и фамелие Степанищев Евгений, а зовут меня по-разному.
+Последний ник - BOLK (а предпоследний был St.A.John). Любимый пароль - lasttime,
+но пользуюсь не любимыми, любимая машина - Хаммер, любимое число - 256.
+<br><br>Мой сайт - <a href="http://bolk.exler.ru/">bolk.exler.ru</a>
+</FONT><P></P>
+</TD></TR>
+<TR><TD><TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% BGCOLOR=BLACK ALIGN=CENTER><TR><TD><IMG SRC=null.gif WIDTH=1 HEIGHT=1></TD></TR></TABLE></TD></TR>
+<TR><TD><FONT SIZE=1 FACE=Arial><DIV ALIGN=RIGHT><A HREF="unix/unix.htm" TARGET=_blank><B>x Запуск</B></A>&nbsp;&nbsp;<A HREF="#up"><B>^ Вверх</B></A></DIV>
+<A NAME="xi">
+<CENTER><STRONG>Специал тхынкс.</STRONG></CENTER><BR>
+1. Коробейникову Антону (aka aSL), за тестирование, Junix Desktop и идею мигающего курсора. ;)<BR>
+2. Моему братишке Степанищеву Олегу - за помощь в тестировании.<BR>
+3. Тем, кто написал мне отзывы о моей программе.<BR>
+4. Фирмам <A HREF="http://www.microsoft.com"><FONT COLOR=BLACK><B>Мелкомягкой</B></FONT></A> и <A HREF="http://www.netscape.com"><FONT COLOR=BLACK><B>Нетшкаф</B></FONT></A> за их (крив-)ые браузеры.<BR>
+5. Той компании, которая выпускает пиво "Bavaria". За пиво.<BR>
+6. <A HREF="http://skill.ru/"><FONT COLOR=BLACK><B>Skill.ru</B></FONT></A> за место и возможность применять CGI+SSI.<BR>
+7. И всем остальным - за то что не мешали.
+<BR></FONT><P></P>
+</TD></TR>
+<TR><TD><TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% BGCOLOR=BLACK ALIGN=CENTER><TR><TD><IMG SRC=null.gif WIDTH=1 HEIGHT=1></TD></TR></TABLE></TD></TR>
+<TR><TD><FONT SIZE=1 FACE=Arial>
+<CENTER STYLE="font-family:Arial;font-size:8px">
+Формат 640x480/256. Печать офсетная.<BR>Бумага офсетная.<BR>Объем Z печ.л.<BR>Тираж
+неогранич. Заказ N5<BR>Ни одно животное не пострадало.<BR>
+Написал: <A HREF="mailto:bolk@yandex.ru">Степанищев Евгений</A>
+</CENTER></FONT>
+</TD></TR>
+</TABLE>
+</BODY>
+
+
+
+

@@ -1,0 +1,19 @@
+<HEAD>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="ext.css" TITLE="mainstyle">
+</HEAD>
+<BODY BGCOLOR=WHiTE LINK=#00008F VLINK=#00008F ALINK=RED TEXT=BLACK>
+<TABLE WIDTH=580 BORDER=0 ALIGN=CENTER CELLPADDING=2>
+<TR><TD>
+<B CLASS=b>alias [&lt;команда&gt; [&lt;алиас&gt;]]</B> - показать или установить алиас (псевдоним).
+Без параметров эта команда устанавливает все алисы системы. С одним
+параметром - показывает алиас (если он есть) заданной команды.
+Форма команды с 2-мя параметрами присваивает заданный алиас заданной команде.
+При подстановке алиаса параметры предыдущей команды подставляются в
+конец алиаса если в определении алиаса не было имен переменных, иначе - специально
+не подставляются (Unix подстановки в алиасах реализовывать долго,
+поэтому я реализовал их несколько по-другому).
+<BR><BR>
+<B>Пример.</B><BR><FONT COLOR=RED>alias</FONT> l 'ls -l';
+<BR><FONT COLOR=RED>alias</FONT> u 'echo $* end'
+<BR><FONT COLOR=RED>alias</FONT>;
+</TD></TR></TABLE>

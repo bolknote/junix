@@ -1,0 +1,26 @@
+<HEAD>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="ext.css" TITLE="mainstyle">
+</HEAD>
+<BODY BGCOLOR=WHiTE LINK=#00008F VLINK=#00008F ALINK=RED TEXT=BLACK>
+<TABLE WIDTH=580 BORDER=0 ALIGN=CENTER CELLPADDING=2>
+<TR><TD>
+<B CLASS="b">[$]<I>&lt;имя&gt;</I></B> - манипуляции с переменными.<P>Вы можете выполнять
+присваивание переменных, использовать их в выражениях и командах. В
+системе определены стандартные переменные: $path - пути для поиска команд (разделенные
+пробелом) $pwd - текущий каталог и $home - домашний каталог. См. также команду <A HREF=26a.htm><B>set</B></A>.
+Аргумент присваивания считается строкой (специальные символы
+должны экранироваться) и записывается в переменную,
+если в  строке присутствуют ` (обр. апостроф),то происходит подстановка
+результата команды. (Символ $ взят в [ и ] не случайно - его ставить не обязательно).
+По умолчанию при подстановке переменной берется МАКСИМАЛЬНОЕ имя, но можно задать его
+явно при помощи фигурных скобок. Например: ${path}.
+<BR><BR>
+<B>Пример.</B><BR>
+<FONT COLOR=RED>$</FONT>type=echo;<FONT COLOR=RED>$</FONT>type Привет!;<BR>
+echo <FONT COLOR=RED>$</FONT>type<FONT COLOR=RED>$</FONT>PATH;
+<FONT COLOR=RED>$</FONT>type=`echo Привет!`;<BR>echo <FONT COLOR=RED>$</FONT>type
+
+<P ALIGN=RIGHT><A HREF="1b.htm"><B>См. также&gt;&gt;</B></A>
+</TD></TR>
+</TABLE>
+</BODY>

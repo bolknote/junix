@@ -1,0 +1,45 @@
+<HEAD>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="ext.css" TITLE="mainstyle">
+</HEAD>
+<BODY BGCOLOR=WHiTE LINK=#00008F VLINK=#00008F ALINK=RED TEXT=BLACK>
+<TABLE WIDTH=580 BORDER=0 ALIGN=CENTER CELLPADDING=2>
+<TR><TD>
+<B CLASS=b>date [<I>+&lt;формат&gt;</I>]</B> - без параметров выводит на экран текущую дату.
+¬ыводима€ дата может управл€тьс€ форматом. ‘ормат задаетс€ при помощи спецсимволов,
+начинающихс€ со знака %:<BR>
+<TABLE WIDTH=100% CELLPADDING=2 BORDER=0>
+<TR VALIGN=TOP>
+<TD><B>%</B> - сам символ %</TD>
+<TD><B>n</B> - символ перевода строки</TD>
+<TD><B>t</B> - табул€ци€</TD>
+</TR>
+<TR VALIGN=TOP>
+<TD><B>n</B> - вставить символ перевода строки</TD>
+<TD><B>t</B> - вставить символ табул€ции</TD>
+<TD><B>m</B> - мес€ц года - от 01 до 12</TD>
+</TR>
+<TR VALIGN=TOP>
+<TD><B>d</B> - день мес€ца - от 01 до 31</TD>
+<TD><B>y</B> - 2 цифры года - от 00 до 99</TD>
+<TD><B>D</B> - дата в виде мм/дд/гг</TD>
+</TR>
+<TR VALIGN=TOP>
+<TD><B>H</B> - час - от 00 до 23</TD>
+<TD><B>M</B> - минуты - от 00 до 59</TD>
+<TD><B>S</B> - секунды - от 00 до 59</TD>
+</TR>
+<TR VALIGN=TOP>
+<TD><B>T</B> - врем€ в виде чч:мм:сс</TD>
+<TD><B>j</B> - день года - от 001 до 366</TD>
+<TD><B>w</B> - день недели - воскресенье = 0</TD>
+</TR>
+<TR VALIGN=TOP>
+<TD><B>a</B> - сокращение дн€ недели - от Sun до Sat</TD>
+<TD><B>h</B> - сокращение названи€ мес€ца - от Jan до Dec</TD>
+<TD><B>r</B> - врем€ по 12-часовой шкале</TD>
+</TR>
+</TABLE>
+<BR><BR>
+<B>ѕример.</B><BR><FONT COLOR=RED>date</FONT> +ƒата: %d/%m/%y, врем€: %T
+</TD></TR></TABLE>
+</BODY>
