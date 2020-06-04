@@ -291,7 +291,7 @@ function pop()
 	return t
 }
 
-function top()
+function top_()
 {
 	return this[this.length-1]
 }
@@ -340,7 +340,7 @@ function stack()
 	this.push = push
 	this.pop  = pop
 	this.find = find
-	this.top  = top
+	this.top  = top_
 	this.del  = del
 	this.rep  = rep
 	this.unshift = unshift
