@@ -1277,7 +1277,7 @@ function JZip (str, f, b)
 {
 	str = str.replace(/\*/g,'*+')
 	var Dict  = new Array ()
-	var Words = str.split (/[^\wа-яА-Я0-9:]+/),l1,l2,i,j,r
+	var Words = str.split (/[^\w\u0410-\u042FЁа-яё0-9:]+/),l1,l2,i,j,r
 	var Word  = new Array()
 	var Freq  = new Array ()
 

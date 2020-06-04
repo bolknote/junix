@@ -400,6 +400,23 @@ function Height()
 // Тип процессора
 function TypeCPU()
 {
+	var vendors = {
+		'Google Inc.': { 'OPR': 'Opera', 'Chrome': 'Chrome'},
+		'Apple Computer, Inc.': {'Version': 'Safari'}
+	};
+
+	for (var vendor in vendors) {
+		if (navigator.vendor == vendor) {
+			for (var code in vendors[vendor]) {
+				var re = new RegExp(code+'/(\\d+\\.\\d+)');
+				if (re.test(navigator.userAgent)) {
+					Type(vendors[vendor][code]+' '+RegExp.$1+' detected');
+					return;
+				}
+			}
+		}
+	}
+
 	if (OP)
 	var browser = 'Opera'; else
 	var browser = NC?'Netscape Navigator':navigator.appName
