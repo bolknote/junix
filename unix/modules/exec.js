@@ -1,4 +1,4 @@
-// Чтение из файла описаний процессов
+// Р§С‚РµРЅРёРµ РёР· С„Р°Р№Р»Р° РѕРїРёСЃР°РЅРёР№ РїСЂРѕС†РµСЃСЃРѕРІ
 function GetDescr (n)
 {
 	var s = fget ('/etc/daemon.cf'), i, S
@@ -14,7 +14,7 @@ function GetDescr (n)
 	return ''
 }
 
-// Производит замену примитивов (-l name)
+// РџСЂРѕРёР·РІРѕРґРёС‚ Р·Р°РјРµРЅСѓ РїСЂРёРјРёС‚РёРІРѕРІ (-l name)
 function PriRep(str)
 {
 	var re = !MZ && NC && Version<5 ? '[-(\\w) ([^]]+)\\]' : '\\[-(\\w) ([^\\]]+)\\]'
@@ -41,7 +41,7 @@ function PriFunc(f,name)
 	return f
 }
 
-// Вычисляет разницу между двумя дирами
+// Р’С‹С‡РёСЃР»СЏРµС‚ СЂР°Р·РЅРёС†Сѓ РјРµР¶РґСѓ РґРІСѓРјСЏ РґРёСЂР°РјРё
 function SubcDirs(p1,p2)
 {
 	p1 = FullPath(p1).snsplit("/")
@@ -57,7 +57,7 @@ function SubcDirs(p1,p2)
 	return p2
 }
 
-// Для подстановки маски в скобки
+// Р”Р»СЏ РїРѕРґСЃС‚Р°РЅРѕРІРєРё РјР°СЃРєРё РІ СЃРєРѕР±РєРё
 function AddMask(str)
 {
 	if (/^\((.+)\)$/.test(str)) str = RegExp.$1
@@ -83,13 +83,13 @@ function AddMask(str)
 	return StripSlashes('('+Out.join(' ')+')')
 }
 
-// Убирает все экранирующие слеши
+// РЈР±РёСЂР°РµС‚ РІСЃРµ СЌРєСЂР°РЅРёСЂСѓСЋС‰РёРµ СЃР»РµС€Рё
 function StripSlashes(str)
 {
 	return str.replace(/\\(.)/g,"$1")
 }
 
-// "Защищенный" (для IE5) eval
+// "Р—Р°С‰РёС‰РµРЅРЅС‹Р№" (РґР»СЏ IE5) eval
 function sheval(expr)
 {
 	IOResult = errNoError
@@ -102,7 +102,7 @@ function sheval(expr)
 	return eval(expr)
 }
 
-// Применение маски файла и FullName на массив (без 1st эл-та)
+// РџСЂРёРјРµРЅРµРЅРёРµ РјР°СЃРєРё С„Р°Р№Р»Р° Рё FullName РЅР° РјР°СЃСЃРёРІ (Р±РµР· 1st СЌР»-С‚Р°)
 function DoName(arr)
 {
 	var out = new Array(), k = 0
@@ -118,7 +118,7 @@ function DoName(arr)
 	return new Array("")
 }
 
-// Для команды cd
+// Р”Р»СЏ РєРѕРјР°РЅРґС‹ cd
 function prepcd(str)
 {
 	if (faccess(str).nm('x')) return "cd: "+ErrorMsg(IOResult = errNoAccess)
@@ -127,14 +127,14 @@ function prepcd(str)
 	return ''
 }
 
-// Срезает пробелы слева
+// РЎСЂРµР·Р°РµС‚ РїСЂРѕР±РµР»С‹ СЃР»РµРІР°
 function ltrim(str)
 {
 	if (/^\s*(\S.{0,})$/.test(str)) return RegExp.$1
 	return str
 }
 
-// Разбор адреса for sed
+// Р Р°Р·Р±РѕСЂ Р°РґСЂРµСЃР° for sed
 function CheckAddress(line,num,com,len)
 {
 	var flag;
@@ -171,7 +171,7 @@ function CheckAddress(line,num,com,len)
 	} else return com;
 };
 
-// Замена спецсимволов (до пробела) на \HH
+// Р—Р°РјРµРЅР° СЃРїРµС†СЃРёРјРІРѕР»РѕРІ (РґРѕ РїСЂРѕР±РµР»Р°) РЅР° \HH
 
 function Spec2Hex(str)
 {
@@ -184,7 +184,7 @@ function Spec2Hex(str)
 	return out;
 };
 
-// Экранировка для reg exp
+// Р­РєСЂР°РЅРёСЂРѕРІРєР° РґР»СЏ reg exp
 function QuoteMeta(str)
 {
 	for (var out="",i=0;i<str.length;i++)
@@ -195,7 +195,7 @@ function QuoteMeta(str)
 	return out
 };
 
-// Экранировка для path
+// Р­РєСЂР°РЅРёСЂРѕРІРєР° РґР»СЏ path
 function QuoteMeta2(str)
 {
 	for (var out="",i=0;i<str.length;i++)
@@ -206,7 +206,7 @@ function QuoteMeta2(str)
 	return out
 }
 
-// Экранировка Unix spec chars
+// Р­РєСЂР°РЅРёСЂРѕРІРєР° Unix spec chars
 function QuoteMeta3(str)
 {
 	for (var out="",i=0;i<str.length;i++)
@@ -221,13 +221,13 @@ function QuoteMeta3(str)
 function Sed(line,Script,lineout)
 {
 	var Lines=line.split("\n"),buffer='',res,out='',c,str,i,j;
-	var addon='';		// Добавка после буфера (для r)
-	var XpaH='';		// Хранилище
+	var addon='';		// Р”РѕР±Р°РІРєР° РїРѕСЃР»Рµ Р±СѓС„РµСЂР° (РґР»СЏ r)
+	var XpaH='';		// РҐСЂР°РЅРёР»РёС‰Рµ
 	var newfor=0,chg=0,brack=0,addr='';
 	line=null;
 	var len=Lines.length, scln
 	for (i=0;i<len-1;i++) Lines[i]=Lines[i]+'\n';
-	for (i=0;i<Script.length;i++)		// 3aмена { на адреса
+	for (i=0;i<Script.length;i++)		// 3aРјРµРЅР° { РЅР° Р°РґСЂРµСЃР°
 	{
 		scln = StripSlashes(Script[i])
 		if (brack)
@@ -338,7 +338,7 @@ function Sed(line,Script,lineout)
 	return Spec2Hex(out);
 };
 
-// Поставить в очередь команд
+// РџРѕСЃС‚Р°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ РєРѕРјР°РЅРґ
 function SetChain(com)
 {
 	for (var i = 128; i<148; i++)
@@ -352,7 +352,7 @@ function SetChain(com)
 	return i
 };
 
-// Фоновое выполнение
+// Р¤РѕРЅРѕРІРѕРµ РІС‹РїРѕР»РЅРµРЅРёРµ
 function BackExec()
 {
 	var last = Chain.length - 1, cur, com
@@ -397,7 +397,7 @@ function BackExec()
 	}
 };
 
-// Установить переменную
+// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РїРµСЂРµРјРµРЅРЅСѓСЋ
 function SetVar(name,val)
 {
 	IOResult = errNoError
@@ -412,8 +412,8 @@ function SetVar(name,val)
 	return '';
 };
 
-// Ищет символ с которого cтроки расходятся (не совпадают)
-// Длина 1st строки должна быть >= второй
+// РС‰РµС‚ СЃРёРјРІРѕР» СЃ РєРѕС‚РѕСЂРѕРіРѕ cС‚СЂРѕРєРё СЂР°СЃС…РѕРґСЏС‚СЃСЏ (РЅРµ СЃРѕРІРїР°РґР°СЋС‚)
+// Р”Р»РёРЅР° 1st СЃС‚СЂРѕРєРё РґРѕР»Р¶РЅР° Р±С‹С‚СЊ >= РІС‚РѕСЂРѕР№
 function Compare(s1,s2)
 {
 	if (s1.length<s2.length) return 0;
@@ -422,7 +422,7 @@ function Compare(s1,s2)
 	return i;
 };
 
-// Взять настоящее значение переменной
+// Р’Р·СЏС‚СЊ РЅР°СЃС‚РѕСЏС‰РµРµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№
 function GetRealVar(name)
 {
 	IOResult = errNoError;
@@ -431,7 +431,7 @@ function GetRealVar(name)
 	return IOResult = errVarNotFound;
 };
 
-// Взять значение переменной с учетом всяких #, [] и проч.
+// Р’Р·СЏС‚СЊ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ СЃ СѓС‡РµС‚РѕРј РІСЃСЏРєРёС… #, [] Рё РїСЂРѕС‡.
 function GetVar(name)
 {
 	var r,i,Vals
@@ -461,8 +461,8 @@ function GetVar(name)
 	if (/^\*(.{0,})/.test(name))
 	return r = RegExp.$1,GetVar("argv[*]")+r
 
-	// для NC слеши перед [ & ] убраны, для NC 5.xx, 6.xx - поставлены
-	// специально для beonex и ранних мозил стоит {0,} вместо *
+	// РґР»СЏ NC СЃР»РµС€Рё РїРµСЂРµРґ [ & ] СѓР±СЂР°РЅС‹, РґР»СЏ NC 5.xx, 6.xx - РїРѕСЃС‚Р°РІР»РµРЅС‹
+	// СЃРїРµС†РёР°Р»СЊРЅРѕ РґР»СЏ beonex Рё СЂР°РЅРЅРёС… РјРѕР·РёР» СЃС‚РѕРёС‚ {0,} РІРјРµСЃС‚Рѕ *
 
 	if (!MZ && NC && Version < 5)
 	var ts = new RegExp("^([^[]+)\\[([^]]+)\\](.{0,})").test(name); else
@@ -502,14 +502,14 @@ function GetVar(name)
 };
 
 
-// Возвращает значение переменной, если $?переменная, иначе - ''
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№, РµСЃР»Рё $?РїРµСЂРµРјРµРЅРЅР°СЏ, РёРЅР°С‡Рµ - ''
 function GetRealVar2(str)
 {
 	if (str = GetRealVar(str),IOResult) return ''
 	return str
 }
 
-// Hайти переменную, max. соотв. имени+остаток
+// HР°Р№С‚Рё РїРµСЂРµРјРµРЅРЅСѓСЋ, max. СЃРѕРѕС‚РІ. РёРјРµРЅРё+РѕСЃС‚Р°С‚РѕРє
 function SearchVar(name)
 {
 	var max=0,i,p,idx;
@@ -524,8 +524,8 @@ function SearchVar(name)
 	return VarValues[idx]+name.substring(VarNames[idx].length+1);
 };
 
-// Пытается заменить все переменные на их значения
-// (рассматривается часть строки после '=' )
+// РџС‹С‚Р°РµС‚СЃСЏ Р·Р°РјРµРЅРёС‚СЊ РІСЃРµ РїРµСЂРµРјРµРЅРЅС‹Рµ РЅР° РёС… Р·РЅР°С‡РµРЅРёСЏ
+// (СЂР°СЃСЃРјР°С‚СЂРёРІР°РµС‚СЃСЏ С‡Р°СЃС‚СЊ СЃС‚СЂРѕРєРё РїРѕСЃР»Рµ '=' )
 function ReplaceAllVars()
 {
 	IOResult = errNoError
@@ -563,7 +563,7 @@ function ReplaceAllVars()
 	return out+str
 };
 
-// Аналог :N в TPascal'e
+// РђРЅР°Р»РѕРі :N РІ TPascal'e
 function Norm(str,n)
 {
 	str+='';
@@ -572,7 +572,7 @@ function Norm(str,n)
 	return str;
 };
 
-// Аналог :N в TPascal'e, но с другого края
+// РђРЅР°Р»РѕРі :N РІ TPascal'e, РЅРѕ СЃ РґСЂСѓРіРѕРіРѕ РєСЂР°СЏ
 function Norm2(str,n)
 {
 	str+='';
@@ -581,14 +581,14 @@ function Norm2(str,n)
 	return str;
 };
 
-// Урезка строки
+// РЈСЂРµР·РєР° СЃС‚СЂРѕРєРё
 function CutStr(str,n)
 {
 	if (str.length<=n) return str;
 	return str.substr(0,n-3)+"...";
 };
 
-// Поиск [не]совпадений
+// РџРѕРёСЃРє [РЅРµ]СЃРѕРІРїР°РґРµРЅРёР№
 function Grep(s, r, flag, case_ins)
 {
 	var str=s.split(/\n/), out='', s
@@ -623,7 +623,7 @@ function Grep(s, r, flag, case_ins)
 	return out
 }
 
-// Выделяет столбец
+// Р’С‹РґРµР»СЏРµС‚ СЃС‚РѕР»Р±РµС†
 
 function Cut(s,r,lf)
 {
@@ -655,7 +655,7 @@ function Cut(s,r,lf)
 	return out
 };
 
-// Устанавливает код завершения команды
+// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєРѕРґ Р·Р°РІРµСЂС€РµРЅРёСЏ РєРѕРјР°РЅРґС‹
 
 function EL(s)
 {
@@ -663,7 +663,7 @@ function EL(s)
 };
 
 
-// производит подмену подстановки `комманда` результатом комманды
+// РїСЂРѕРёР·РІРѕРґРёС‚ РїРѕРґРјРµРЅСѓ РїРѕРґСЃС‚Р°РЅРѕРІРєРё `РєРѕРјРјР°РЅРґР°` СЂРµР·СѓР»СЊС‚Р°С‚РѕРј РєРѕРјРјР°РЅРґС‹
 
 function ReplaceW(str)
 {
@@ -686,7 +686,7 @@ function ReplaceW(str)
 	return out+str
 };
 
-// Пытается угадать какие права доступа должны быть у файла
+// РџС‹С‚Р°РµС‚СЃСЏ СѓРіР°РґР°С‚СЊ РєР°РєРёРµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ Сѓ С„Р°Р№Р»Р°
 function GuessAccess(i)
 {
 	if (typeof(Files[i])=="undefined") return "-rw-"
@@ -700,7 +700,7 @@ function GuessAccess(i)
 }
 
 
-// Производит исправление файловой системы
+// РџСЂРѕРёР·РІРѕРґРёС‚ РёСЃРїСЂР°РІР»РµРЅРёРµ С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјС‹
 function RubScan()
 {
 	EL(0);
@@ -800,20 +800,20 @@ function RubScan()
 
 function Run()
 {
-	// Почему-то передача параметров в IE 4.01 глючит...
+	// РџРѕС‡РµРјСѓ-С‚Рѕ РїРµСЂРµРґР°С‡Р° РїР°СЂР°РјРµС‚СЂРѕРІ РІ IE 4.01 РіР»СЋС‡РёС‚...
 	var str = ltrim(arguments[0]), bustr = ltrim(arguments[1]), nstr = str,i,
 	sline = arguments[2]
 
 	if ((str==' ') || (str=='') || (str=='{') || (str=='}')) return '';
 	str = str.replace(/\\t/g,"        ").replace(/\\n/g,"\n")
-	// Если образуется петля, выход из петли.
+	// Р•СЃР»Рё РѕР±СЂР°Р·СѓРµС‚СЃСЏ РїРµС‚Р»СЏ, РІС‹С…РѕРґ РёР· РїРµС‚Р»Рё.
 	if (TTL<0) {TTL = 20;return str+': Loop found. Terminated.'}
 
-	// Разделение аргументов
+	// Р Р°Р·РґРµР»РµРЅРёРµ Р°СЂРіСѓРјРµРЅС‚РѕРІ
 	var args=str.snsplit(),com = ltrim(args[0]),out='',i,Mask
 	if (args.length<1) return ""
 
-	// Вырезаем ключи
+	// Р’С‹СЂРµР·Р°РµРј РєР»СЋС‡Рё
 	var key = ""
 	if (com != 'chmod')
 	for (i = 0; i<args.length; i++)
@@ -825,11 +825,11 @@ function Run()
 	}
 	var cnt=args.length-1;
 
-	// В переменной parms находятся все аргументы
+	// Р’ РїРµСЂРµРјРµРЅРЅРѕР№ parms РЅР°С…РѕРґСЏС‚СЃСЏ РІСЃРµ Р°СЂРіСѓРјРµРЅС‚С‹
 	var parms=args.slice(1,cnt+1).join(' ')
 
-	// Обработка алиасов. Должна стоять первой, что бы можно
-	// было назначить алиасы встроенным командам
+	// РћР±СЂР°Р±РѕС‚РєР° Р°Р»РёР°СЃРѕРІ. Р”РѕР»Р¶РЅР° СЃС‚РѕСЏС‚СЊ РїРµСЂРІРѕР№, С‡С‚Рѕ Р±С‹ РјРѕР¶РЅРѕ
+	// Р±С‹Р»Рѕ РЅР°Р·РЅР°С‡РёС‚СЊ Р°Р»РёР°СЃС‹ РІСЃС‚СЂРѕРµРЅРЅС‹Рј РєРѕРјР°РЅРґР°Рј
 	if (com=='alias' || com=='unalias')
 	{
 		var name = "/etc/alias.cf"
@@ -1111,7 +1111,7 @@ function Run()
 	} else
 	if (com=='dialog')
 	{
-		// Слеши перед [ и ] для старого NC убраны - он их не понимает
+		// РЎР»РµС€Рё РїРµСЂРµРґ [ Рё ] РґР»СЏ СЃС‚Р°СЂРѕРіРѕ NC СѓР±СЂР°РЅС‹ - РѕРЅ РёС… РЅРµ РїРѕРЅРёРјР°РµС‚
 
 		if (!MZ && NC && Version < 5)
 		var ts = new RegExp("\\[([^])]*)\\]\s+\[([^]]+)\\]").test(parms); else
@@ -1199,7 +1199,7 @@ function Run()
 		}
 		args[1] = StripSlashes(args[1])
 		var acc = faccess(args[1])
-		if (acc!=-1 && acc.c(0)=="l")	// Нет проверки на сущ., цел. кат. м/не сущ.
+		if (acc!=-1 && acc.c(0)=="l")	// РќРµС‚ РїСЂРѕРІРµСЂРєРё РЅР° СЃСѓС‰., С†РµР». РєР°С‚. Рј/РЅРµ СЃСѓС‰.
 		{
 			i = LocalExists(FullName(args[1]))
 			if (IOResult) return ''
@@ -1330,7 +1330,7 @@ function Run()
 			{
 				if (fexists(Mask[i]),IOResult) out+='\n'+ErrorMsg(IOResult); else
 				{
-					if (args[1].length==1)	// цифра
+					if (args[1].length==1)	// С†РёС„СЂР°
 					{
 						var arg = parseInt(args[1],'8')
 						if (isNaN(arg)) {EL(7);return 'Invalid argument.'}
@@ -1620,7 +1620,7 @@ function Run()
 			if (key.m('s')) ScrollDown = 1
 			if (key.m('f')) ScrollDown = 0
 			if (key.m('o')) cursor = ocursor = '_', bcursor = ' '
-			if (key.m('O')) cursor = ocursor = '', bcursor = ''
+			if (key.m('O')) cursor = ocursor = '\uE00F\uE007', bcursor = ''
 			if (key.m('b'))
 			{
 				if (cHnd!=null) clearInterval(cHnd)
@@ -1678,7 +1678,7 @@ function Run()
 
 				if (/^[\W\d]/.test(name)) {EL(IOResult=errInvVarName);return ErrorMsg(IOResult)}
 
-				// Слеши перед [ и ] для старого NC убраны - он их не понимает
+				// РЎР»РµС€Рё РїРµСЂРµРґ [ Рё ] РґР»СЏ СЃС‚Р°СЂРѕРіРѕ NC СѓР±СЂР°РЅС‹ - РѕРЅ РёС… РЅРµ РїРѕРЅРёРјР°РµС‚
 
 				if (!MZ && NC && Version < 5)
 				var ts = new RegExp("^([^[]+)\\[([^]])*\\](.{0,})$").test(name); else
@@ -2198,7 +2198,7 @@ function Run()
 			TTL--
 			var c = fget(name),arg,reg
 
-			// substr введен для исправления глюка с \n
+			// substr РІРІРµРґРµРЅ РґР»СЏ РёСЃРїСЂР°РІР»РµРЅРёСЏ РіР»СЋРєР° СЃ \n
 			if (/^(#!\/bin\/)(j[us]sh)/.test(c) || /^(#!)(j[us]sh)/.test(c))
 			{
 				var len = (RegExp.$1+RegExp.$2).length
@@ -2223,7 +2223,7 @@ function Run()
 	return out
 };
 
-// Поиск последней закрывающей скобки в строке нач. с откр. скобки
+// РџРѕРёСЃРє РїРѕСЃР»РµРґРЅРµР№ Р·Р°РєСЂС‹РІР°СЋС‰РµР№ СЃРєРѕР±РєРё РІ СЃС‚СЂРѕРєРµ РЅР°С‡. СЃ РѕС‚РєСЂ. СЃРєРѕР±РєРё
 function SearchLast(str,n)
 {
 	var sk=0;
@@ -2236,7 +2236,7 @@ function SearchLast(str,n)
 	return i;
 };
 
-// Поиск имени файла для вывода
+// РџРѕРёСЃРє РёРјРµРЅРё С„Р°Р№Р»Р° РґР»СЏ РІС‹РІРѕРґР°
 function SearchPipeOut(str,n)
 {
 	for (var i=n;i<str.length;i++)
@@ -2244,7 +2244,7 @@ function SearchPipeOut(str,n)
 	return i;
 };
 
-// Поиск имени файла для ввода
+// РџРѕРёСЃРє РёРјРµРЅРё С„Р°Р№Р»Р° РґР»СЏ РІРІРѕРґР°
 function SearchPipeIn(str,n)
 {
 	for (var i=n;i<str.length;i++)
@@ -2259,7 +2259,7 @@ function ShellComs(com)
 	return ""
 }
 
-// проверяет нет ли окружающих символ пробелов
+// РїСЂРѕРІРµСЂСЏРµС‚ РЅРµС‚ Р»Рё РѕРєСЂСѓР¶Р°СЋС‰РёС… СЃРёРјРІРѕР» РїСЂРѕР±РµР»РѕРІ
 function ChSpc(str,i)
 {
 	return str.c(i-1)==" " && str.c(i+1)==" "
@@ -2341,7 +2341,7 @@ function Exec(str)
 			  cont = fget(s)
 
 			  if (IOResult) Out+='\n'+ErrorMsg(IOResult),EL(IOResult)
-			  else EL(0), fput("", cont+'\n'), pipe = 1 // + "конец файла"
+			  else EL(0), fput("", cont+'\n'), pipe = 1 // + "РєРѕРЅРµС† С„Р°Р№Р»Р°"
 			  break
 
 		case '|': if (ChSpc(str,i)) {com+=c;break} else pipe = 1
@@ -2383,7 +2383,7 @@ function Exec(str)
 				{
 					if (--gotoTTL<0) return "goto: Loop found. Terminated.";
 					label = RegExp.$1
-					if (label!="") i = -1 // -1, т.к. в конце итерации добавится 1
+					if (label!="") i = -1 // -1, С‚.Рє. РІ РєРѕРЅС†Рµ РёС‚РµСЂР°С†РёРё РґРѕР±Р°РІРёС‚СЃСЏ 1
 					com = ""
 					break
 				}

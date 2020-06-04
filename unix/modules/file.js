@@ -1,4 +1,4 @@
-// Обрабатывает регулярные выражения для SearchMask
+// РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЂРµРіСѓР»СЏСЂРЅС‹Рµ РІС‹СЂР°Р¶РµРЅРёСЏ РґР»СЏ SearchMask
 function SMCheckReg(str)
 {
 	for (var c, out = "",bracket = "", i = 0; i<str.length; i++)
@@ -23,13 +23,13 @@ function SMCheckReg(str)
 	out = out+QuoteMeta(bracket.substr(0,1))+bracket.substr(1)
 	return out
 }
-// Проверяет нужно ли производить поиск по образцу
+// РџСЂРѕРІРµСЂСЏРµС‚ РЅСѓР¶РЅРѕ Р»Рё РїСЂРѕРёР·РІРѕРґРёС‚СЊ РїРѕРёСЃРє РїРѕ РѕР±СЂР°Р·С†Сѓ
 function CheckMask(str)
 {
 	return /^[\[\]\*\?]/.test(str) || /[^(\\)][\[\]\*\?]/.test(str)
 };
 
-// Добавление каталога монтирования
+// Р”РѕР±Р°РІР»РµРЅРёРµ РєР°С‚Р°Р»РѕРіР° РјРѕРЅС‚РёСЂРѕРІР°РЅРёСЏ
 function MountList()
 {
 	var last = Files.length,ch;
@@ -67,7 +67,7 @@ function MountList()
 	}
 	return ""
 };
-// Перехват ошибки (для NC)
+// РџРµСЂРµС…РІР°С‚ РѕС€РёР±РєРё (РґР»СЏ NC)
 
 function onerror(msg, URL, lineNum)
 { 
@@ -79,8 +79,8 @@ function onerror(msg, URL, lineNum)
 	return true
 };
 
-// Ф-я для сортировки по длине ("длинные" вперед). Сделал свою
-// т.к. NC 4.7 грохается при использовании встроенной ф-и с параметром ф-я
+// Р¤-СЏ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ РґР»РёРЅРµ ("РґР»РёРЅРЅС‹Рµ" РІРїРµСЂРµРґ). РЎРґРµР»Р°Р» СЃРІРѕСЋ
+// С‚.Рє. NC 4.7 РіСЂРѕС…Р°РµС‚СЃСЏ РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РІСЃС‚СЂРѕРµРЅРЅРѕР№ С„-Рё СЃ РїР°СЂР°РјРµС‚СЂРѕРј С„-СЏ
 
 function QuickSort(List,a,b)
 {
@@ -101,14 +101,14 @@ function QuickSort(List,a,b)
 	return List;
 };
 
-// Поиск пути или файла для клавиши Tab
+// РџРѕРёСЃРє РїСѓС‚Рё РёР»Рё С„Р°Р№Р»Р° РґР»СЏ РєР»Р°РІРёС€Рё Tab
 function SearchPath(str)
 {
 	var p=-1,n,s,len,name,List
 	var rest = str
 	var Div = str.split(/[ ><|;)("']/)
 
-	if (Div.length<2) return str		// Команда без параметра
+	if (Div.length<2) return str		// РљРѕРјР°РЅРґР° Р±РµР· РїР°СЂР°РјРµС‚СЂР°
 	for (var p = Div[Div.length-1].length, i = Div.length-2; i>=0; i--)
 	{
 		if (Div[i].l()=="\\") p+= Div[i].length+1
@@ -139,7 +139,7 @@ function SearchPath(str)
 	return com+QuoteMeta2(str+s.substr(len))
 };
 
-// Производит поиск пути файла по маске
+// РџСЂРѕРёР·РІРѕРґРёС‚ РїРѕРёСЃРє РїСѓС‚Рё С„Р°Р№Р»Р° РїРѕ РјР°СЃРєРµ
 
 function SearchMask(str)
 {
@@ -173,7 +173,7 @@ function SearchMask(str)
 	return Path
 };
 
-// Нормализирует путь
+// РќРѕСЂРјР°Р»РёР·РёСЂСѓРµС‚ РїСѓС‚СЊ
 function FullPath(path)
 {
 	if (path == "" || path == ".")  return WD
@@ -193,28 +193,28 @@ function FullPath(path)
 	return path
 };
 
-// Выбирает имя файла
+// Р’С‹Р±РёСЂР°РµС‚ РёРјСЏ С„Р°Р№Р»Р°
 
 function ExtractName(str)
 {
 	if (/([^\/]+)$/.test(str)) return RegExp.$1; else return "";
 };
 
-// Выбирает путь до файла, в конце - слэш
+// Р’С‹Р±РёСЂР°РµС‚ РїСѓС‚СЊ РґРѕ С„Р°Р№Р»Р°, РІ РєРѕРЅС†Рµ - СЃР»СЌС€
 
 function ExtractPath(str)
 {
 	if (/(.+\/)[^\/]*$/.test(str)) return RegExp.$1; else return "/";
 };
 
-// Выбирает путь до файла
+// Р’С‹Р±РёСЂР°РµС‚ РїСѓС‚СЊ РґРѕ С„Р°Р№Р»Р°
 
 function ExtractPath2(str)
 {
 	if (/(.+)\/[^\/]*$/.test(str)) return RegExp.$1; else return "";
 };
 
-// Нормализирует имя
+// РќРѕСЂРјР°Р»РёР·РёСЂСѓРµС‚ РёРјСЏ
 function FullName(name)
 {
 	if (name == "/") return "/";
@@ -223,7 +223,7 @@ function FullName(name)
 };
 
 
-// Находим связь на файл
+// РќР°С…РѕРґРёРј СЃРІСЏР·СЊ РЅР° С„Р°Р№Р»
 function FindLink(s)
 {
 	IOResult = errNoError;
@@ -349,7 +349,7 @@ function fput(name,content)
 		return put (name,content,Res[1])
 	};
 
-	// Файл не создан в локале, путь не смонтирован, создаем файл
+	// Р¤Р°Р№Р» РЅРµ СЃРѕР·РґР°РЅ РІ Р»РѕРєР°Р»Рµ, РїСѓС‚СЊ РЅРµ СЃРјРѕРЅС‚РёСЂРѕРІР°РЅ, СЃРѕР·РґР°РµРј С„Р°Р№Р»
 	
 	var len = Names.length;
 	if (len != Access.length || len != Names.length)
@@ -455,7 +455,7 @@ function fexists(name)
 	LocalExists(name)
 	if (!IOResult) return IOResult
 
-	// Может быть у нас директорий?
+	// РњРѕР¶РµС‚ Р±С‹С‚СЊ Сѓ РЅР°СЃ РґРёСЂРµРєС‚РѕСЂРёР№?
 	var tname = FullPath(name)
 
 	for (var i in Names) if (Names[i].length >= (len = tname.length)
@@ -529,7 +529,7 @@ function fsize(name)
        	return sheval("FileSize"+Res[0]+"('"+name+"','"+Res[1]+"')");
 	};
 	
-	// Путь выше смонтирован
+	// РџСѓС‚СЊ РІС‹С€Рµ СЃРјРѕРЅС‚РёСЂРѕРІР°РЅ
 	var len = name.length;
 	for (i in Mount) if (Mount[i].substr(0,len) == name) return len;
 
@@ -566,7 +566,7 @@ function faccess(name)
        	return sheval("FileAccess"+Res[0]+"('"+name+"','"+Res[1]+"')")
 	}
 
-	// Путь выше смонтирован
+	// РџСѓС‚СЊ РІС‹С€Рµ СЃРјРѕРЅС‚РёСЂРѕРІР°РЅ
 	var len = name.length;
 	for (i in Mount) if (Mount[i].substr(0,len) == name) return "drwx"
 	
@@ -1197,7 +1197,7 @@ function UniqFile()
 	return name+i;
 };
 
-// Удаление элемента массива
+// РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР°
 function DeleteItem(m,r)
 {
 	var Out=new Array(),i,j
@@ -1205,7 +1205,7 @@ function DeleteItem(m,r)
 	return Out;
 };
 
-// Проверка существования директория (локально)
+// РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РґРёСЂРµРєС‚РѕСЂРёСЏ (Р»РѕРєР°Р»СЊРЅРѕ)
 function LocalDirEi(path)
 {
 	path = FullPath(path)
@@ -1277,7 +1277,7 @@ function JZip (str, f, b)
 {
 	str = str.replace(/\*/g,'*+')
 	var Dict  = new Array ()
-	var Words = str.split (/[^\wа-яА-Я0-9:]+/),l1,l2,i,j,r
+	var Words = str.split (/[^\wР°-СЏРђ-РЇ0-9:]+/),l1,l2,i,j,r
 	var Word  = new Array()
 	var Freq  = new Array ()
 

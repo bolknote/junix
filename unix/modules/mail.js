@@ -1,13 +1,13 @@
-// Заглушка
+// Р—Р°РіР»СѓС€РєР°
 function SetLogin(user, pass)
 {
 	SetVar("user",user)
 }
 
-// Перейти к... (в объекте mail)
+// РџРµСЂРµР№С‚Рё Рє... (РІ РѕР±СЉРµРєС‚Рµ mail)
 function Navi()
 {
-	dtime = ping?(new Date()-0):0	// для команды ping
+	dtime = ping?(new Date()-0):0	// РґР»СЏ РєРѕРјР°РЅРґС‹ ping
 
 	with(document)
 	if (NaviStack.length)
@@ -24,7 +24,7 @@ function Navi()
 	}
 }
 
-// Поставить в очередь
+// РџРѕСЃС‚Р°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ
 function SetNavi(url)
 {
 	NaviStack.unshift(url+(ping?'/%00?'+Math.random():''))
@@ -52,7 +52,7 @@ function NaviFree(num, dtime)
 	}
 }
 
-// Проверка на глючные браузеры
+// РџСЂРѕРІРµСЂРєР° РЅР° РіР»СЋС‡РЅС‹Рµ Р±СЂР°СѓР·РµСЂС‹
 
 function NaviCheckBrowser() // 1 <= bad
 {

@@ -27,14 +27,14 @@ errCantChmod = -25
 
 var Mount = new Array();
 var Device  = new Array();
-var ROMount = 0;			// Флаг монтирования только R/O
-var DelConf = 0;			// Подтверждение изменений на Extended
-var ScrollDown = 1			// Cкроллинг экрана вниз при наборе текста.
-var KeepHistory = 1			// Сохранять историю команд
-var KeyDebug = 0			// Просматривать коды клавиш
+var ROMount = 0;			// Р¤Р»Р°Рі РјРѕРЅС‚РёСЂРѕРІР°РЅРёСЏ С‚РѕР»СЊРєРѕ R/O
+var DelConf = 0;			// РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РёР·РјРµРЅРµРЅРёР№ РЅР° Extended
+var ScrollDown = 1			// CРєСЂРѕР»Р»РёРЅРі СЌРєСЂР°РЅР° РІРЅРёР· РїСЂРё РЅР°Р±РѕСЂРµ С‚РµРєСЃС‚Р°.
+var KeepHistory = 1			// РЎРѕС…СЂР°РЅСЏС‚СЊ РёСЃС‚РѕСЂРёСЋ РєРѕРјР°РЅРґ
+var KeyDebug = 0			// РџСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ РєРѕРґС‹ РєР»Р°РІРёС€
 
 var IOResult = errNoError;
-var umask  = '-rwx';			// Маска по-умолчанию
+var umask  = '-rwx';			// РњР°СЃРєР° РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ
 
 var Files=new Array();
 var Names=new Array('/bin/bc','/bin/vi','/bin/man','/bin/manual.jz','/bin/pwd','/bin/brow','/.rcjush','/tmp/','/.history','/bin/whoami',
@@ -166,12 +166,12 @@ var errorlevel=0;
 var Screen='';
 var input='';
 var stdout='stdout',stdin='stdin',stderr='stderr';
-var hig=14;		// высота экрана
-var st=UserStd;		// Состояние системы
-var TTL=20;		// Max. kоличество вложенных комманд.
+var hig=14;		// РІС‹СЃРѕС‚Р° СЌРєСЂР°РЅР°
+var st=UserStd;		// РЎРѕСЃС‚РѕСЏРЅРёРµ СЃРёСЃС‚РµРјС‹
+var TTL=20;		// Max. kРѕР»РёС‡РµСЃС‚РІРѕ РІР»РѕР¶РµРЅРЅС‹С… РєРѕРјРјР°РЅРґ.
 var edcurr='',edcurs=0;
-var vimode=1;		// Режим редактора
-var viname='';		// Имя редактируемого файла
+var vimode=1;		// Р РµР¶РёРј СЂРµРґР°РєС‚РѕСЂР°
+var viname='';		// РРјСЏ СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ С„Р°Р№Р»Р°
 
 with (navigator)
 if (/Opera\s+([\d\.b]+)/.test(userAgent) ||
@@ -180,53 +180,53 @@ if (/Opera\s+([\d\.b]+)/.test(userAgent) ||
 /MSIE ([\.\db]+)/.test(appVersion) ||
 /^((\d|\.)+)/.test(appVersion)) Version = RegExp.$1; else Version=parseInt(appVersion)
 
-var ctrl=0;		// Был нажат Ctrl
-var dialog=0;		// Диалоговый режим
-var prompt='';		// Подсказка для диалогового режима
-var dlgcom=';';		// Команда после диалогового режима
-var chaincnt=0;		// Счетчик для фонового процесса
-var daemoncnt=0;	// Счетчик демонов
-var daemoncur=0;	// Текущий демон
-var pHnd=null;		// Хэндл для контроля за нажатием на клавиши (для chain)
-var pmore=0;		// Откуда начинать more (position).
-var cache=null;		// массив для команды more.
-var wid=60;		// Ширина экрана ( в символах ).
+var ctrl=0;		// Р‘С‹Р» РЅР°Р¶Р°С‚ Ctrl
+var dialog=0;		// Р”РёР°Р»РѕРіРѕРІС‹Р№ СЂРµР¶РёРј
+var prompt='';		// РџРѕРґСЃРєР°Р·РєР° РґР»СЏ РґРёР°Р»РѕРіРѕРІРѕРіРѕ СЂРµР¶РёРјР°
+var dlgcom=';';		// РљРѕРјР°РЅРґР° РїРѕСЃР»Рµ РґРёР°Р»РѕРіРѕРІРѕРіРѕ СЂРµР¶РёРјР°
+var chaincnt=0;		// РЎС‡РµС‚С‡РёРє РґР»СЏ С„РѕРЅРѕРІРѕРіРѕ РїСЂРѕС†РµСЃСЃР°
+var daemoncnt=0;	// РЎС‡РµС‚С‡РёРє РґРµРјРѕРЅРѕРІ
+var daemoncur=0;	// РўРµРєСѓС‰РёР№ РґРµРјРѕРЅ
+var pHnd=null;		// РҐСЌРЅРґР» РґР»СЏ РєРѕРЅС‚СЂРѕР»СЏ Р·Р° РЅР°Р¶Р°С‚РёРµРј РЅР° РєР»Р°РІРёС€Рё (РґР»СЏ chain)
+var pmore=0;		// РћС‚РєСѓРґР° РЅР°С‡РёРЅР°С‚СЊ more (position).
+var cache=null;		// РјР°СЃСЃРёРІ РґР»СЏ РєРѕРјР°РЅРґС‹ more.
+var wid=60;		// РЁРёСЂРёРЅР° СЌРєСЂР°РЅР° ( РІ СЃРёРјРІРѕР»Р°С… ).
 var HTA=/hta$/i.test(location.href);
-var password;		// Текущий пароль
-var login;		// Текущее имя
-var offset=0;		// Смещение в буфере ввода
-var selstart=0;		// Смещение для выделения
-var curchain=0;		// Текущий элемент в бакграунде.
-var lock=0;		// Блокировка клавиатуры
-var lockout=0;		// Блокировка вывода на экран
-var clipboard='';	// Clipboard for IE4 и NC
-var scriptname = "jush"; // Haзвание текущего скрипта
-var pipeout = "";	// Переменная для вывода через pipe
-var pipefile = "";	// Данные, выводимые через pipe
-var Break = new stack();// Стек флагов для команды break
-var keypressed = 0	// Клавиша нажата?
-var keydown = 0		// Флаг того, что прошло событие keydown
-var XBOCT = ""		// Конечная строка после Screen
-var jhistory = 0	// Текущая пара строчек в history
-var curnavi = 0		// Текущий вывод в navi-objs
-var PID = 0		// Текущий PID
-var cursor = "";	// Текущий вид курсора
-var bcursor = ""    // Погашенный курсор
-var ocursor = "";	// Общий вид курсора
-var cHnd = null;	// Handle обработчика курсора
-var bHnd = null		// Handle обработчика бага *NIX NC
-var label = "";		// Текущая метка, к которой осуществляется переход
-var alias = "";		// Текущая замена alias
-var minus = "";		// для команды -
-var ping = 0		// флаг - запущена комманда ping ее значение - количество нужных пингов
-var pingto = 1500	// timeout для ping в ms
+var password;		// РўРµРєСѓС‰РёР№ РїР°СЂРѕР»СЊ
+var login;		// РўРµРєСѓС‰РµРµ РёРјСЏ
+var offset=0;		// РЎРјРµС‰РµРЅРёРµ РІ Р±СѓС„РµСЂРµ РІРІРѕРґР°
+var selstart=0;		// РЎРјРµС‰РµРЅРёРµ РґР»СЏ РІС‹РґРµР»РµРЅРёСЏ
+var curchain=0;		// РўРµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ РІ Р±Р°РєРіСЂР°СѓРЅРґРµ.
+var lock=0;		// Р‘Р»РѕРєРёСЂРѕРІРєР° РєР»Р°РІРёР°С‚СѓСЂС‹
+var lockout=0;		// Р‘Р»РѕРєРёСЂРѕРІРєР° РІС‹РІРѕРґР° РЅР° СЌРєСЂР°РЅ
+var clipboard='';	// Clipboard for IE4 Рё NC
+var scriptname = "jush"; // HaР·РІР°РЅРёРµ С‚РµРєСѓС‰РµРіРѕ СЃРєСЂРёРїС‚Р°
+var pipeout = "";	// РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РІС‹РІРѕРґР° С‡РµСЂРµР· pipe
+var pipefile = "";	// Р”Р°РЅРЅС‹Рµ, РІС‹РІРѕРґРёРјС‹Рµ С‡РµСЂРµР· pipe
+var Break = new stack();// РЎС‚РµРє С„Р»Р°РіРѕРІ РґР»СЏ РєРѕРјР°РЅРґС‹ break
+var keypressed = 0	// РљР»Р°РІРёС€Р° РЅР°Р¶Р°С‚Р°?
+var keydown = 0		// Р¤Р»Р°Рі С‚РѕРіРѕ, С‡С‚Рѕ РїСЂРѕС€Р»Рѕ СЃРѕР±С‹С‚РёРµ keydown
+var XBOCT = ""		// РљРѕРЅРµС‡РЅР°СЏ СЃС‚СЂРѕРєР° РїРѕСЃР»Рµ Screen
+var jhistory = 0	// РўРµРєСѓС‰Р°СЏ РїР°СЂР° СЃС‚СЂРѕС‡РµРє РІ history
+var curnavi = 0		// РўРµРєСѓС‰РёР№ РІС‹РІРѕРґ РІ navi-objs
+var PID = 0		// РўРµРєСѓС‰РёР№ PID
+var cursor = "\uE011";	// РўРµРєСѓС‰РёР№ РІРёРґ РєСѓСЂСЃРѕСЂР°
+var bcursor = ""    // РџРѕРіР°С€РµРЅРЅС‹Р№ РєСѓСЂСЃРѕСЂ
+var ocursor = "\uE011";	// РћР±С‰РёР№ РІРёРґ РєСѓСЂСЃРѕСЂР°
+var cHnd = null;	// Handle РѕР±СЂР°Р±РѕС‚С‡РёРєР° РєСѓСЂСЃРѕСЂР°
+var bHnd = null		// Handle РѕР±СЂР°Р±РѕС‚С‡РёРєР° Р±Р°РіР° *NIX NC
+var label = "";		// РўРµРєСѓС‰Р°СЏ РјРµС‚РєР°, Рє РєРѕС‚РѕСЂРѕР№ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ РїРµСЂРµС…РѕРґ
+var alias = "";		// РўРµРєСѓС‰Р°СЏ Р·Р°РјРµРЅР° alias
+var minus = "";		// РґР»СЏ РєРѕРјР°РЅРґС‹ -
+var ping = 0		// С„Р»Р°Рі - Р·Р°РїСѓС‰РµРЅР° РєРѕРјРјР°РЅРґР° ping РµРµ Р·РЅР°С‡РµРЅРёРµ - РєРѕР»РёС‡РµСЃС‚РІРѕ РЅСѓР¶РЅС‹С… РїРёРЅРіРѕРІ
+var pingto = 1500	// timeout РґР»СЏ ping РІ ms
 
-// Для Нетскапы кривой
-var CODES="                                 !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~      :   % <          --                                        АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюя";
+// Р”Р»СЏ РќРµС‚СЃРєР°РїС‹ РєСЂРёРІРѕР№
+var CODES="                                 !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~      :   % <          --       В                                 РђР‘Р’Р“Р”Р•Р–Р—РР™РљР›РњРќРћРџР РЎРўРЈР¤РҐР¦Р§РЁР©РЄР«Р¬Р­Р®РЇР°Р±РІРіРґРµР¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ";
 
-// Расширяем String.
+// Р Р°СЃС€РёСЂСЏРµРј String.
 
-// разделение на массив через неэкранированные пробелы
+// СЂР°Р·РґРµР»РµРЅРёРµ РЅР° РјР°СЃСЃРёРІ С‡РµСЂРµР· РЅРµСЌРєСЂР°РЅРёСЂРѕРІР°РЅРЅС‹Рµ РїСЂРѕР±РµР»С‹
 function snsplit()
 {
 	var spc = arguments.length?arguments[0]:" ", nspc = spc
@@ -255,7 +255,7 @@ String.prototype.rec = Recode
 String.prototype.dec = DeRecod
 String.prototype.snsplit = snsplit
 
-// Мат. ф-и
+// РњР°С‚. С„-Рё
 
 abs=Math.abs;
 sin=Math.sin;
@@ -271,7 +271,7 @@ asin=Math.asin;
 acos=Math.acos;
 atan=Math.atan;
 
-// Объект stack
+// РћР±СЉРµРєС‚ stack
 function push(val)
 {
 	this[this.length] = val
@@ -346,9 +346,9 @@ function stack()
 	this.unshift = unshift
 	this.clear= clear
 }
-// Конец описания объекта stack
+// РљРѕРЅРµС† РѕРїРёСЃР°РЅРёСЏ РѕР±СЉРµРєС‚Р° stack
 
-// Взять вид текущей подсказки
+// Р’Р·СЏС‚СЊ РІРёРґ С‚РµРєСѓС‰РµР№ РїРѕРґСЃРєР°Р·РєРё
 function P()
 {
 	var ps = GetRealVar2('prompt')
@@ -382,14 +382,14 @@ function Int(func,a,b)
 	return h*out/6
 };
 
-// Ширина экрана в символах
+// РЁРёСЂРёРЅР° СЌРєСЂР°РЅР° РІ СЃРёРјРІРѕР»Р°С…
 function Width()
 {
 	if (NC) return (Math.floor(window.innerWidth/12))
 	return (Math.floor(document.body.clientWidth/12))
 };
 
-// Высота экрана в символах
+// Р’С‹СЃРѕС‚Р° СЌРєСЂР°РЅР° РІ СЃРёРјРІРѕР»Р°С…
 function Height()
 {
 	if (NC) return (Math.floor(window.innerHeight/24))
@@ -397,7 +397,7 @@ function Height()
 };
 
 
-// Тип процессора
+// РўРёРї РїСЂРѕС†РµСЃСЃРѕСЂР°
 function TypeCPU()
 {
 	if (OP)
@@ -413,7 +413,7 @@ function TypeCPU()
 	Type(browser+' '+locver+' detected.')
 };
 
-// Выводит на экран заданное число строк ( и возвращает позицию)
+// Р’С‹РІРѕРґРёС‚ РЅР° СЌРєСЂР°РЅ Р·Р°РґР°РЅРЅРѕРµ С‡РёСЃР»Рѕ СЃС‚СЂРѕРє ( Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕР·РёС†РёСЋ)
 function More(str)
 {
 	if (pmore && cache!=null)
@@ -431,7 +431,7 @@ function More(str)
 	return ""
 }
 
-// Открывет страницу в окне
+// РћС‚РєСЂС‹РІРµС‚ СЃС‚СЂР°РЅРёС†Сѓ РІ РѕРєРЅРµ
 function OpenPage(s)
 {
 	if ((s.nm('.')) && (s.nm(':'))) s='www.'+s+'.com'; else
@@ -451,7 +451,7 @@ function OpenPage(s)
 };
 
 
-// Выводит поле редактора
+// Р’С‹РІРѕРґРёС‚ РїРѕР»Рµ СЂРµРґР°РєС‚РѕСЂР°
 function Vi(name)
 {
 	if (name=='') {EL(3);return "\nMissing argument."}
@@ -480,7 +480,7 @@ function Vi(name)
 };
 
 
-// Перекодировка спецсимволов в HTML
+// РџРµСЂРµРєРѕРґРёСЂРѕРІРєР° СЃРїРµС†СЃРёРјРІРѕР»РѕРІ РІ HTML
 function Recode()
 {
 	return this.replace(/\&/g,"&amp;").replace(/>/g,"&gt;").replace(/</g,"&lt;").replace(/[ \x00]/g,"&nbsp;").replace(/\t/g,"&nbsp;&nbsp;").replace(/[\n]/g,"<BR>")
@@ -491,7 +491,7 @@ function DeRecod()
 	return this.replace(//g,'\n').replace(/<BR>/g,'\n').replace(/\&nbsp;/g,' ').replace(/\&amp;/g,'&').replace(/\&gt;/g,'>').replace(/\&lt;/g,'<')
 }
 
-// Осуществляет перенос строк
+// РћСЃСѓС‰РµСЃС‚РІР»СЏРµС‚ РїРµСЂРµРЅРѕСЃ СЃС‚СЂРѕРє
 
 function Cutter(str)
 {
@@ -515,18 +515,18 @@ function Err(s)
 	fput('stderr',s);
 };
 
-// Вывод в окно браузера
+// Р’С‹РІРѕРґ РІ РѕРєРЅРѕ Р±СЂР°СѓР·РµСЂР°
 function Brow(s)
 {
-	if (!NC || Version>=5 || MZ) s = s.replace(/([^&<]|\&\w+;)/,"<U>$1</U>")
-	s = s.replace(//,"<U> </U>")
-	s = s.replace(//g,"<FONT COLOR=green>").replace(//g,"</FONT>")
-	s = s.replace(//,'<SPAN STYLE="background-color:green">')
-	s = s.replace(//,"</SPAN>")
+	if (!NC || Version>=5 || MZ) s = s.replace(/\uE011([^&\uE00F<]|\&\w+;)/,"<U>$1</U>")
+	s = s.replace(/\uE011/,"<U>&nbsp;</U>")
+	s = s.replace(/\uE00F\uE001/g,"<FONT COLOR=green>").replace(/\uE00F\uE002/g,"</FONT>")
+	s = s.replace(/\uE00F/,'<SPAN STYLE="background-color:green">')
+	s = s.replace(/\uE00F/,"</SPAN>")
 	s = s.replace(/<BR><BR>/g,"<BR>&nbsp;<BR>")
 
 	if (document.getElementById)
-	document.getElementById('text').innerHTML = s+' '; else	// 0xFF для Beonex (съедает последний символ)
+	document.getElementById('text').innerHTML = s; else
 	if (IE) document.all.text.innerHTML=s; else
 	if (document && document.layers && document.layers.text && document.layers.text.document)
 	with (document.layers)
@@ -539,7 +539,7 @@ function Brow(s)
 	}
 }
 
-// Очистка экрана
+// РћС‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
 function Clear()
 {
 	scrollTo(0,0)
@@ -550,7 +550,7 @@ function Clear()
 	return ''
 };
 
-// Вывод на экран
+// Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
 
 function Write(str)
 {
@@ -567,9 +567,9 @@ function Write(str)
 		if (IE || NC && Version>5 || MZ)
 		{
 			if (selstart>offset)
-			intextR=""+intextR.substring(0,selstart-offset)+""+intextR.substring(selstart-offset); else
+			intextR="\uE00F"+intextR.substring(0,selstart-offset)+"\uE00F"+intextR.substring(selstart-offset); else
 			if (selstart<offset)
-			intextL=intextL.substring(0,selstart)+""+intextL.substring(selstart)+"";
+			intextL=intextL.substring(0,selstart)+"\uE00F"+intextL.substring(selstart)+"\uE00F";
 		};
 
 		var intext=intextL+str+cursor+intextR;
@@ -585,7 +585,7 @@ function Write(str)
 	if (ScrollDown && str!="") scroll(0,10000)
 };
 
-// Сброс буфера
+// РЎР±СЂРѕСЃ Р±СѓС„РµСЂР°
 function Flush()
 {
 	var p=Screen.lastIndexOf('<BR>');
@@ -598,7 +598,7 @@ function Flush()
 };
 
 
-// Удаление символа
+// РЈРґР°Р»РµРЅРёРµ СЃРёРјРІРѕР»Р°
 
 function DeleteChar()
 {
@@ -611,7 +611,7 @@ function DeleteChar()
 	};
 };
 
-// Печать со сбросом
+// РџРµС‡Р°С‚СЊ СЃРѕ СЃР±СЂРѕСЃРѕРј
 function Type(s)
 {
 	Write(s),Flush();
@@ -647,7 +647,7 @@ function RLEDecompress(str)
 	return out;
 }
 
-// Замена переменных в диалоге
+// Р—Р°РјРµРЅР° РїРµСЂРµРјРµРЅРЅС‹С… РІ РґРёР°Р»РѕРіРµ
 function DialogRep(dlgcom,str)
 {
 	return dlgcom.replace(/PARM/g,str.replace(/([<>\|;\{\}])/g,"\\\\$1")).replace(/LEN/g,str.length)
@@ -671,8 +671,8 @@ function KeyDown(event)
 
 function KeyPress(event)
 {
-	// Предотвращает срабатывание в Opera и Mozilla 1.3+ стандартных клавиатурных
-	// макросов (например, "p")
+	// РџСЂРµРґРѕС‚РІСЂР°С‰Р°РµС‚ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёРµ РІ Opera Рё Mozilla 1.3+ СЃС‚Р°РЅРґР°СЂС‚РЅС‹С… РєР»Р°РІРёР°С‚СѓСЂРЅС‹С…
+	// РјР°РєСЂРѕСЃРѕРІ (РЅР°РїСЂРёРјРµСЂ, "p")
 	if (event.preventDefault) event.preventDefault()
 
 	chaincnt = 0, TTL = 20
@@ -933,7 +933,7 @@ function WorkStd(key,chr,mod)
 		{
 			var hn = key&8?jhistory+1:jhistory-1
 			var n = 1+(hn<<1)
-			if (n<=hist.length && n>-2) // Для крайних, пустых команд <= и >-2
+			if (n<=hist.length && n>-2) // Р”Р»СЏ РєСЂР°Р№РЅРёС…, РїСѓСЃС‚С‹С… РєРѕРјР°РЅРґ <= Рё >-2
 			{
 				jhistory = hn
 				if (n<hist.length && n>0)
@@ -995,7 +995,7 @@ function ViedStd(key,chr,mod)
 	return ""
 }
 
-// Работа с буфером обмена
+// Р Р°Р±РѕС‚Р° СЃ Р±СѓС„РµСЂРѕРј РѕР±РјРµРЅР°
 function SetBuffer(str)
 {
 	if (IE)
