@@ -853,6 +853,11 @@ function KeyProcced(key,chr,mod)
 				Type(key==20?"System raised.\n"+P():"^C\n"+P())
 				return 0
 
+		// Ctrl+K
+		case 11:
+			Clear();Type(P());
+			return 0;
+
 		case 6082:	if (mod & 2) Run('restart')
 	}
 
