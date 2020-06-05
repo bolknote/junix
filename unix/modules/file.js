@@ -1471,7 +1471,7 @@ function FileAccessStorage(name)
 
 function FileAvailStorage()
 {
-	var used = 0, List = FileListStorage();
+	var used = 0, List = Object.keys(localStorage);
 	for (var i in List) {
 		var content = FileReadStorage(List[i]);
 		if (IOResult == errNoError) {
