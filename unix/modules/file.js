@@ -56,8 +56,20 @@ function MountList()
 			if (/^\/?(.)/.test(location.pathname))
 			Dirs[Dirs.length] = "Extended,"+RegExp.$1.toLowerCase()+":",
 			Mount[Mount.length] = "local";
+			last++;
 		};
 	};
+
+	if (window.localStorage) {
+		last = Files.length;
+
+		Dirs[Dirs.length] = Files[last]  = "Storage,1";
+		Mount[Mount.length] = "local",
+		Names[last] = '/dev/local/storage',
+		Access[last] = 'br--';
+
+		last++;
+	}
 
 	for (i=0;i<Mount.length;i++)
 	{
@@ -1386,5 +1398,91 @@ function FileChmodExtended(name, r, disk)
 		return errNoError		
 	}
 
+	return errCantChmod
+}
+
+function FileListStorage(path)
+{
+	var All = Object.keys(localStorage);
+
+	var List = [], cut = path.length;
+
+	for (var i = 0; i < All.length; i++) {
+		if (path == '' || All[i].indexOf(path) == 0) {
+			var name = All[i].substr(cut);
+			if (name != '') {
+				var slash = name.indexOf('/');
+				// если это папка, либо вообще имя слеша не содержит
+				// (то есть вложенность — текуща)
+				if (slash == -1 || slash == name.length - 1) {
+					List.push(name);
+				}
+			}
+		}
+	}
+
+	return List;
+}
+
+function FileSizeStorage(name)
+{
+	if (name == "") {
+		return 0;
+	}
+
+	var content = FileReadStorage(name)
+	return IOResult == errNoError ? content.length : 0;
+}
+
+function FileReadStorage(name)
+{
+	var val = localStorage.getItem(name);
+	if (val == undefined) {
+		return IOResult = errNotFound;
+	}
+
+	IOResult = errNoError;
+
+	return val;
+}
+
+function FileWriteStorage(name, content)
+{
+	try {
+		localStorage.setItem(name, content);
+		IOResult = errNoError;
+	} catch (e) {
+		IOResult = errCookNoSpace;
+	}
+
+	return IOResult;
+}
+
+function FileExistsStorage(name)
+{
+	FileReadStorage(name);
+	return IOResult;
+}
+
+function FileAccessStorage(name)
+{
+	return name == '' ? "drwx" : "-rw-";
+}
+
+function FileAvailStorage()
+{
+	var used = 0, List = FileListStorage();
+	for (var i in List) {
+		var content = FileReadStorage(List[i]);
+		if (IOResult == errNoError) {
+			used += content.length;
+		}
+	}
+
+	return [used, '-'];
+}
+
+function FileChmodStorage()
+{
 	return errCantChmod
 }

@@ -2090,6 +2090,7 @@ function Run()
 					case "Extended":if (navigator.platform=="Win32") vfs="vfat";else vfs="extd";break
 					case "Object":	vfs="objt";break
 					case "Cookie":	vfs="cook";break
+					case 'Storage': vfs='sqlite';break;
 					default:	vfs="---"
 				}
 				out+=Norm2(vfs,7)
