@@ -681,7 +681,7 @@ if (NC)
 
 function KeyDown(event)
 {
-	if (IE && event.keyCode == 9) self.focus()
+	if (document.body.focus && event.keyCode == 9) document.body.focus()
 	keypressed = 0
 	keydown = 1
 }
@@ -717,7 +717,7 @@ function KeyPress(event)
 	mod = event.shiftKey?4:0 + event.ctrlKey?2:0 + event.altKey?1:0,
 	chr = String.fromCharCode(key); else chr = CODES.charAt(key)
 
-	if (KeyDebug) window.status = "Key vk code: "+key+". Symbol: "+chr+". Prefix: "+mod
+	if (KeyDebug) console.log(window.status = "Key vk code: "+key+". Symbol: "+chr+". Prefix: "+mod)
 
 	if (ScrollDown && key!=6034 && key!=6033) scroll(0,10000)
 	st (key, chr, mod)

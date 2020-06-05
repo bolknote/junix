@@ -25,10 +25,12 @@ onResize="wid=Width();hig=Height();Write('')" onError="return true" onFocus="if 
 <![if !IE]>
 <BODY BGCOLOR=BLACK TEXT=LIME SCROLL=AUTO
 onLoad="wid=Width();hig=Height();document.getElementById('text').style.width=document.body.clientWidth-50;this.focus();Type('JS Unix emulator v'+Ver+' 1999-2002.\n');TypeCPU();Type('\nLogin: ');"
-LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0 onResize="wid=Width();hig=Height();Write('')" onError="return true">
+LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0 onResize="wid=Width();hig=Height();Write('')" onError="return true"
+TABINDEX=1>
 <![endif]>
 <LAYER TOP=0 LEFT=5>
 <NOLAYER>
+<DIV TABINDEX=2 STYLE="position: absolute;width:1px;left:-9px"></DIV>
 <DIV STYLE="position: absolute;top:3px;left:5px;cursor:default" TITLE="copyright">
 </NOLAYER>
 <FONT FACE=System COLOR=GREEN SIZE=1 STYLE="font-family:Monospace;font-size:10px;color:green">&copy; Stepanischev Evgeny. (BO/\K) 2002 Kazan</FONT>
