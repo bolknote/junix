@@ -50,7 +50,7 @@ var Access=new Array('-r-x','-r-x','-r-x','-r--','-r-x','-r-x','-rwx','-rwx','-r
 'crw-','-r-x','cr--', '-r-x')
 var VarNames=new Array('path','home','pwd','prompt','prompt2','user','version','argv',
 'cdpath','history')
-var VarValues=new Array('(/bin /etc)','/','/','# ','> ','nobody',Ver,'()',
+var VarValues=new Array('(/bin /etc)','/','/','# ','> ','root',Ver,'()',
 '/etc/',0)
 
 
@@ -881,7 +881,7 @@ function PassStd(key,chr,mod)
 	if (key==13)
 	{
 		offset = selstart = input.length
-		if (login=="") login = "nobody"
+		if (login=="") login = "root"
 		password = input, input = ""
 		SetLogin(login,password)
 		if (fexists("/.rcjush"),!IOResult) Type(Exec("jush /.rcjush;cd")+"\n")
