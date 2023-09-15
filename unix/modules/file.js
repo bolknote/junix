@@ -1003,6 +1003,11 @@ function FileDeleteExtended()
 	IOResult = errNoError
 	if (NC || OP)
 	{
+		netscape.security.PrivilegeManager.enablePrivilege('UniversalFileAccess')
+		var fi=new java.io.File(path,name)
+		if (!fi['delete']()) return IOResult = errNoAccess
+
+		delete fi
 		return IOResult = errNoError
 	} else
 	if (IE)
